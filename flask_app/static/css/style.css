@@ -1,0 +1,26 @@
+
+
+.login_body{
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.error {
+   color: red;
+}
+
+#home {
+   margin-left: 236px;
+}
+
+.reports {
+   overflow: auto;
+}
+
+#form-date {
+   width: 200px;
+}
+
+#quantity {
+   width: 200px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Add a new user</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body class="login_body">
+   <form action="/register" method = "POST" >
+      <div class= "form"> 
+         <h1> Register </h1>
+            {% with messages = get_flashed_messages(category_filter =['regError']) %}     
+               {% if messages %}                            <!-- check if there are any messages -->
+                  {%for message in messages %}            <!-- loop through the messages -->
+                        <p class="error">{{message}}</p>
+                  {% endfor %}
+               {% endif %}
+            {% endwith %}
+               <p> First Name <input class="form-control" type="text" placeholder="First Name" aria-label="default input example" name="first_name" style="width: 300px;"></p>
+               
+               <p>Last Name <input class="form-control" type="text" placeholder="Last Name" aria-label="default input example" name="last_name" style="width: 300px;"> </p>
+
+               <p>Email <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email"> </p>
+               <p> Password <input type="password" name="password" aria-label="default input example" style="width: 300px;" class="form-control"></p>
+               <p> Confirm Password<input type="password" name="pass_conf" aria-label="default input example" style="width: 300px;" class="form-control">
+               </p>
+               <button  class="btn btn-primary">Register</button>
+      </div>
+   </form>
+   <form action="/login" method = "POST" >
+      <div class= "form-login"> 
+         {% with messages = get_flashed_messages(category_filter =['loginError']) %}     
+         {% if messages %}                           
+           {% for message in messages %}            
+               <p class="error">{{message}}</p>                 
+           {% endfor %}
+         {% endif %}
+         {% endwith %}
+         <h1> Login </h1>
+         <label for="email"> Email </label>
+         <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email">
+         <label for="password"> Password </label>
+         <input type="password" name="password" aria-label="default input example" style="width: 300px;" class="form-control">
+         <button  class="btn btn-primary">Login</button>
+         <br>
+         <button class="btn btn-outline-info" id="home">Home</button>
+      </div>
+   </form>
+</body>
+</html>
